@@ -8,6 +8,7 @@ LuaNcurses is a wrapper around the ncurses library for terminal programming. It 
 INSTALL
 =======
 This module requires Lua 5.1 and the ncurses library. To install, modify the Make.config file with paths appropriate to your system and run 'make' and 'make install'.
+P.S. If your distro use "lua5.1" library notation instead of "lua" — you should use "make LUA_LIBNAME=lua5.1".
 
 DOCUMENTATION
 =============
