@@ -1,5 +1,15 @@
-include Make.config
-include Make.$(OS)
+UNAME := $(shell uname)
+DESTDIR := "/"
+LUA_DIR = ${DESTDIR}$(shell pkg-config --variable INSTALL_CMOD lua)
+LUA_INCLUDEPATH = $(shell pkg-config --variable INSTALL_INC lua)
+LUA_LIBNAME := lua
+
+ifeq ($(UNAME), Linux)
+OS_FLAGS = -fPIC
+endif
+ifeq ($(UNAME), Darwin)
+OS_FLAGS = -fPIC -bundle
+endif
 
 BIN = src/curses.so
 OBJ = src/curses.o src/strings.o
