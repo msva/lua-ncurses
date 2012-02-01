@@ -17,7 +17,8 @@ CC = gcc
 INCLUDES = -I$(LUA_INCLUDEPATH)
 DEFINES =
 LIBS = -lcurses -l$(LUA_LIBNAME)
-COMMONFLAGS = -Werror -Wall -pedantic -O2 -g -pipe $(OS_FLAGS)
+TEMP_FLAG_FIXES = -Wno-error=address
+COMMONFLAGS = -Werror $(TEMP_FLAG_FIXES) -Wall -pedantic -O2 -g -pipe $(OS_FLAGS)
 CFLAGS = -c $(INCLUDES) $(DEFINES) $(COMMONFLAGS)
 LDFLAGS = $(LIBS) $(COMMONFLAGS) -shared
 
