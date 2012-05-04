@@ -1,5 +1,7 @@
-LuaNcurses v0.02
-Jesse Luehrs (jluehrs2@uiuc.edu)
+LuaNcurses v0.0.3
+
+Vadim A. Misbakh-Soloviov (mva[at]mva.name) (2011-2012)
+Jesse Luehrs (jluehrs2@uiuc.edu) (pre-2008)
 
 OVERVIEW
 ========
@@ -16,6 +18,11 @@ None yet, but hopefully the included tests should be explanatory enough for now.
 
 CHANGES
 =======
+0.0.3
+- Fixed compilation with GCC:4.6
+- New lead developer.
+- Change in version naming.
+
 0.02
 - Lots of cleanups
 - Portability fixes - should build properly on OS X now, among other things
@@ -25,6 +32,7 @@ CHANGES
 
 COPYRIGHT AND LICENSE
 =====================
+Copyright (C) 2011-2012 Vadim A. Misbakh-Soloviov
 Copyright (C) 2008 Jesse Luehrs
 
 This code is distributed under the MIT license; a copy is in the LICENSE file distributed with the source.
