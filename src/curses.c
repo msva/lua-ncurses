@@ -539,6 +539,7 @@ static int l_addstr(lua_State* L)
         int new_mode, new_color;
 
         set_attrs = 1;
+        #pragma GCC diagnostic ignored "-Waddress"
         attr_get(&old_mode, &old_color, NULL);
         new_mode = get_char_attr(L, 2);
         new_color = PAIR_NUMBER(new_mode);
@@ -610,6 +611,7 @@ static int l_insstr(lua_State* L)
         int new_mode, new_color;
 
         set_attrs = 1;
+        #pragma GCC diagnostic ignored "-Waddress"
         attr_get(&old_mode, &old_color, NULL);
         new_mode = get_char_attr(L, 2);
         new_color = PAIR_NUMBER(new_mode);
