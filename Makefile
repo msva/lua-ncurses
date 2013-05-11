@@ -1,3 +1,4 @@
+include .config
 # Some functions for candiness-looking
 err =                                           \
         @echo -e "\e[1;31m*\e[0m $(1)\e[0m";    \
@@ -9,28 +10,28 @@ wrn =                                           \
 ext =                                           \
         @echo -e "\e[1;35m*\e[0m $(1)\e[0m";
 
-UNAME := $(shell uname)
-DESTDIR := "/"
-PKG_CONFIG := "pkg-config"
-LUA_IMPL := "lua"
-LUA_LIBDIR = ${DESTDIR}$(shell pkg-config --variable INSTALL_CMOD ${LUA_IMPL})
-LUA_INC = $(shell pkg-config --variable INSTALL_INC ${LUA_IMPL})
-LUA_LIBNAME := ${LUA_IMPL}
+UNAME ?= $(shell uname)
+DESTDIR ?= "/"
+PKG_CONFIG ?= "pkg-config"
+LUA_IMPL ?= "lua"
+LUA_LIBDIR = ${DESTDIR}$(shell ${PKG_CONFIG} --variable INSTALL_CMOD ${LUA_IMPL})
+LUA_INC = $(shell ${PKG_CONFIG} --variable INSTALL_INC ${LUA_IMPL})
+LUA_LIBNAME ?= ${LUA_IMPL}
 
 ifeq ($(LUA_IMPL), luajit)
-LUA_LIBNAME := luajit-5.1
+LUA_LIBNAME = luajit-5.1
 endif
 
 ifeq ($(UNAME), Linux)
-OS_FLAGS = -shared
+OS_FLAGS ?= -shared
 endif
 ifeq ($(UNAME), Darwin)
-OS_FLAGS = -bundle -undefined dynamic_lookup
+OS_FLAGS ?= -bundle -undefined dynamic_lookup
 endif
 
 BIN = src/curses.so
 OBJ = src/curses.o src/strings.o
-CC := "cc"
+CC ?= "cc"
 INCLUDES = -I$(LUA_INC)
 DEFINES =
 LIBS = -lcurses -l$(LUA_LIBNAME)
