@@ -1,6 +1,6 @@
 # WARNING
 
-The project has been abandonned, since I have no time to rewrite it to be
+The project has been abandoned, since I have no time to rewrite it to be
 Lua52-Lua53 compatible, while LuaPosix project does all the same things
 (and has support for lot more ncurses A{B,P}I.
 
