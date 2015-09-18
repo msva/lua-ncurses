@@ -8,8 +8,7 @@ RM               ?= rm
 LUA_IMPL         ?= lua
 LUA_BIN          ?= $(LUA_IMPL)
 LUA_CMODULE_DIR  ?= $(shell $(PKG_CONFIG) --variable INSTALL_CMOD $(LUA_IMPL))
-LIBDIR           ?= $(shell $(PKG_CONFIG) --variable libdir $(LUA_IMPL))
-LUA_INC          ?= $(shell $(PKG_CONFIG) --variable INSTALL_INC $(LUA_IMPL))
+LUA_CF           ?= $(shell $(PKG_CONFIG) --cflags $(LUA_IMPL))
 CC               ?= cc
 
 ifeq ($(UNAME), Linux)
@@ -21,12 +20,12 @@ endif
 
 BIN               = src/curses.so
 OBJ               = src/curses.o src/strings.o
-INCLUDES          = -I$(LUA_INC)
+INCLUDES          =
 DEFINES           =
-LIBS              = -L$(LIBDIR) -lcurses
+LIBS              = -lcurses
 COMMONFLAGS       = -O2 -g -std=c99 -pipe -fPIC $(OS_FLAGS)
 LF                = $(LIBS) $(COMMONFLAGS) $(LDFLAGS)
-CF                = -c $(INCLUDES) $(DEFINES) $(COMMONFLAGS) $(CFLAGS)
+CF                = -c $(INCLUDES) $(DEFINES) $(COMMONFLAGS) $(LUA_CF) $(CFLAGS)
 
 SRC               = src/curses.c src/strings.c
 HDR               = src/strings.h
